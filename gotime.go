@@ -30,7 +30,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Need to be root to bind to low port...
+	// Need to be root to bind to low port
+	if !debug {
+		if os.Geteuid() != 0 {
+			log.Fatalln("need root privileges")
+		}
+	}
 
 	// Listen on address
 	addr := ADDR
