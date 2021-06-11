@@ -5,7 +5,9 @@ import (
 	"log"
 	"net"
 	"os"
+	"os/user"
 	"time"
+	"syscall"
 
 	"suah.dev/protect"
 //	"github.com/poolpOrg/ipcmsg"
@@ -78,6 +80,21 @@ func getTheTime() string {
 // Drop privileges.
 // This should be called even in debug mode.
 func privDrop() {
+	if !debug {
+		_, err := user.Lookup(_PW_USER)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = syscall.Chroot(_PW_DIR)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = syscall.Chdir("/")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	err := protect.Pledge("stdio inet proc")
 	if err != nil {
 		log.Fatalln("pledge failed")
