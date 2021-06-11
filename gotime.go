@@ -7,6 +7,7 @@ import (
 	"os"
 	"time"
 
+	"suah.dev/protect"
 //	"github.com/poolpOrg/ipcmsg"
 //	"github.com/poolpOrg/privsep"
 )
@@ -47,6 +48,8 @@ func main() {
 	}
 	defer ln.Close()
 
+	privDrop()
+
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
@@ -70,4 +73,13 @@ func handleRequest(conn net.Conn) {
 func getTheTime() string {
 	t := time.Now().UTC()
 	return t.Format(time.UnixDate)
+}
+
+// Drop privileges.
+// This should be called even in debug mode.
+func privDrop() {
+	err := protect.Pledge("stdio inet proc")
+	if err != nil {
+		log.Fatalln("pledge failed")
+	}
 }
