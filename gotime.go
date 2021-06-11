@@ -48,7 +48,7 @@ func main() {
 		listenAddr = addr + ":" + port
 	}
 
-	ln, err := net.Listen("tcp", listenAddr)
+	ln, err := net.Listen("tcp4", listenAddr)
 	if err != nil {
 		log.Fatalln("error listening on tcp port", port, "error:", err.Error())
 	}
