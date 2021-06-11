@@ -43,7 +43,12 @@ func main() {
 		port = DEBUG_PORT
 	}
 
-	ln, err := net.Listen("tcp", addr + ":" + port)
+	listenAddr := ":" + port
+	if debug {
+		listenAddr = addr + ":" + port
+	}
+
+	ln, err := net.Listen("tcp", listenAddr)
 	if err != nil {
 		log.Fatalln("error listening on tcp port", port, "error:", err.Error())
 	}
