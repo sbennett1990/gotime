@@ -45,7 +45,7 @@ func main() {
 
 	ln, err := net.Listen("tcp", addr + ":" + port)
 	if err != nil {
-		log.Fatalln("error listening on tcp port: ", port, ", error: ", err.Error())
+		log.Fatalln("error listening on tcp port", port, "error:", err.Error())
 	}
 	defer ln.Close()
 
