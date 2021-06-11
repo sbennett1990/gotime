@@ -12,15 +12,33 @@ import (
 )
 
 const (
-	CONN_HOST = "localhost"
-	CONN_PORT = "13"
-	CONN_TYPE = "tcp"
+	ADDR       = "any" // listen on any address?
+	DEBUG_ADDR = "localhost"
+	PORT       = "13"
+	DEBUG_PORT = "13013"
+	_PW_USER   = "_daytimed"
+	_PW_DIR    = "/var/empty"
 )
 
+var debug int
+
 func main() {
+	debug = 1
+
 	// Need to be root to bind to low port...
 
-	ln, err := net.Listen(CONN_TYPE, CONN_HOST + ":" + CONN_PORT)
+	// Listen on address
+	addr := ADDR
+	if debug == 1 {
+		addr = DEBUG_ADDR
+	}
+	// Listen on port
+	port := PORT
+	if debug == 1 {
+		port = DEBUG_PORT
+	}
+
+	ln, err := net.Listen("tcp", addr + ":" + port)
 	if err != nil {
 		fmt.Println("error listening: ", err.Error())
 		os.Exit(1)
