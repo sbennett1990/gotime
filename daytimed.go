@@ -45,6 +45,7 @@ func handleRequest(conn net.Conn) {
 	conn.Close()
 }
 
+// Return the current UTC time as a human-readable string.
 func getTheTime() string {
 	t := time.Now().UTC()
 	return t.Format(time.UnixDate)
