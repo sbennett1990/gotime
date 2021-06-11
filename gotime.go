@@ -6,8 +6,9 @@ import (
 	"net"
 	"os"
 	"os/user"
-	"time"
+	"strconv"
 	"syscall"
+	"time"
 
 	"suah.dev/protect"
 //	"github.com/poolpOrg/ipcmsg"
@@ -81,7 +82,7 @@ func getTheTime() string {
 // This should be called even in debug mode.
 func privDrop() {
 	if !debug {
-		_, err := user.Lookup(_PW_USER)
+		pw, err := user.Lookup(_PW_USER)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -90,6 +91,31 @@ func privDrop() {
 			log.Fatal(err)
 		}
 		err = syscall.Chdir("/")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		uid, err := strconv.Atoi(pw.Uid)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		gid, err := strconv.Atoi(pw.Gid)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = syscall.Setgroups([]int{gid})
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = syscall.Setregid(gid, gid)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = syscall.Setreuid(uid, uid)
 		if err != nil {
 			log.Fatal(err)
 		}
