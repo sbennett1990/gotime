@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"net"
 	"os"
@@ -46,17 +45,14 @@ func main() {
 
 	ln, err := net.Listen("tcp", addr + ":" + port)
 	if err != nil {
-		fmt.Println("error listening: ", err.Error())
-		os.Exit(1)
+		log.Fatalln("error listening on tcp port: ", port, ", error: ", err.Error())
 	}
-
 	defer ln.Close()
 
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
-			fmt.Println("error accepting: ", err.Error())
-			os.Exit(1)
+			log.Fatalln("error accepting: ", err.Error())
 		}
 		go handleRequest(conn)
 	}
