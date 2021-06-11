@@ -38,10 +38,13 @@ func main() {
 	}
 }
 
+// Handle incoming connections.
 func handleRequest(conn net.Conn) {
-	buf := make([]byte, 256)
+	// make a buffer to handle incoming data
+	//buf := make([]byte, 256)
 
-	conn.Write([]byte(""))
+	timestr := getTheTime()
+	conn.Write([]byte(timestr))
 	conn.Close()
 }
 
