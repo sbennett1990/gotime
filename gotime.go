@@ -12,7 +12,6 @@ import (
 )
 
 const (
-	ADDR       = "any" // listen on any address?
 	DEBUG_ADDR = "localhost"
 	PORT       = "13"
 	DEBUG_PORT = "13013"
@@ -37,25 +36,14 @@ func main() {
 		}
 	}
 
-	// Listen on address
-	addr := ADDR
+	listenAddr := ":" + PORT
 	if debug {
-		addr = DEBUG_ADDR
-	}
-	// Listen on port
-	port := PORT
-	if debug {
-		port = DEBUG_PORT
-	}
-
-	listenAddr := ":" + port
-	if debug {
-		listenAddr = addr + ":" + port
+		listenAddr = DEBUG_ADDR + ":" + DEBUG_PORT
 	}
 
 	ln, err := net.Listen("tcp4", listenAddr)
 	if err != nil {
-		log.Fatalln("error listening on tcp port", port, "error:", err.Error())
+		log.Fatalln("error listening on addr", listenAddr, "error:", err.Error())
 	}
 	defer ln.Close()
 
