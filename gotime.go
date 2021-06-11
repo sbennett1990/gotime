@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -20,21 +21,26 @@ const (
 	_PW_DIR    = "/var/empty"
 )
 
-var debug int
+var debug bool
 
 func main() {
-	debug = 1
+	flag.BoolVar(&debug, "d", false, "debug mode")
+	flag.Parse()
+	if flag.NArg() > 0 {
+		flag.Usage()
+		os.Exit(1)
+	}
 
 	// Need to be root to bind to low port...
 
 	// Listen on address
 	addr := ADDR
-	if debug == 1 {
+	if debug {
 		addr = DEBUG_ADDR
 	}
 	// Listen on port
 	port := PORT
-	if debug == 1 {
+	if debug {
 		port = DEBUG_PORT
 	}
 
