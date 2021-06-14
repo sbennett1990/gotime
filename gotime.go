@@ -62,7 +62,9 @@ func main() {
 	}
 }
 
+//
 // Handle incoming connections.
+//
 func handleRequest(conn net.Conn) {
 	// make a buffer to handle incoming data
 	//buf := make([]byte, 256)
@@ -72,14 +74,18 @@ func handleRequest(conn net.Conn) {
 	conn.Close()
 }
 
+//
 // Return the current UTC time as a human-readable string.
+//
 func getTheTime() string {
 	t := time.Now().UTC()
 	return t.Format(time.UnixDate)
 }
 
+//
 // Drop privileges.
 // This should be called even in debug mode.
+//
 func privDrop() {
 	if !debug {
 		pw, err := user.Lookup(_PW_USER)
