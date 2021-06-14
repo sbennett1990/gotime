@@ -67,7 +67,8 @@ func main() {
 //
 func handleRequest(conn net.Conn) {
 	// make a buffer to handle incoming data
-	//buf := make([]byte, 256)
+	buf := make([]byte, 256)
+	reqLen, err := conn.Read(buf)
 
 	timestr := getTheTime()
 	conn.Write([]byte(timestr))
