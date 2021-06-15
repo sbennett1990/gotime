@@ -88,6 +88,15 @@ func handleRequest(conn net.Conn) {
 }
 
 //
+// Print debug message. Arguments are handled in the manner of fmt.Println.
+//
+func logDebug(v ...interface{}) {
+	if debug {
+		log.Println(v)
+	}
+}
+
+//
 // Return the current UTC time as a human-readable string.
 //
 func getTheTime() string {
