@@ -1,7 +1,6 @@
 #!/bin/ksh
 
 daemon="/usr/local/bin/gotime"
-#daemon_user="_daytimed"
 
 . /etc/rc.d/rc.subr
 
