@@ -8,6 +8,7 @@ gotime: *.go go.mod
 
 install:
 	install -o root -g bin ${PROG} /usr/local/bin
+	install -o root -g bin ${PROG}.rc /etc/rc.d/${PROG}
 
 clean:
 	rm -f ${PROG}
