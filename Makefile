@@ -1,4 +1,5 @@
 PROG=	gotime
+MAN=	gotime.8
 
 all: gotime
 
