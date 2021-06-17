@@ -13,8 +13,8 @@ clean:
 	rm -f ${PROG}
 
 user:
-	doas user add -c 'daytime daemon' \
-            -d /var/empty \
-            -p * \
-            -s /sbin/nologin \
+	doas user add -c"daytime daemon" \
+            -d/var/empty \
+            -p* \
+            -s/sbin/nologin \
             _daytimed
