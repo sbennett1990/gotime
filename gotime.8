@@ -45,8 +45,21 @@ root privileges are not required for startup and the server will listen on
 .Em localhost
 port
 .Em 13013 .
-.\" .Sh BUILD
-.\" To build...
+.Sh BUILD
+To build
+.Nm :
+.Pp
+.Dl $ make
+.Pp
+To clean things up:
+.Pp
+.Dl $ make clean
+.Pp
+To install, first create the necessary user account, then install the program:
+.Bd -literal -offset indent
+# make user
+# make install
+.Ed
 .Sh AUTHORS
 .An Scott Bennett
 .Sh CAVEATS
