@@ -55,11 +55,27 @@ To clean things up:
 .Pp
 .Dl $ make clean
 .Pp
-To install, first create the necessary user account, then install the program:
+To install, first create the necessary user account,
+then install the program and the
+.Xr rc.d 8
+script:
 .Bd -literal -offset indent
 # make user
 # make install
 .Ed
+.Pp
+To hook
+.Nm
+into the
+.Xr rc 8
+system, simply add
+.Nm
+to the
+.Va pkg_scripts
+variable in
+.Xr rc.conf 8 :
+.Pp
+.Dl pkg_scripts=gotime
 .Sh AUTHORS
 .An Scott Bennett
 .Sh CAVEATS
@@ -67,4 +83,7 @@ To install, first create the necessary user account, then install the program:
 has only been built and tested on
 .Ox 6.8
 or newer, because it relies on
-.Xr pledge 2 .
+.Xr pledge 2
+and the
+.Xr rc 8
+system.
