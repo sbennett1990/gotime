@@ -6,6 +6,9 @@ all: gotime
 gotime: *.go go.mod
 	go build -o ${PROG}
 
+md:
+	mandoc -Tmarkdown ${MAN} > README.md
+
 install:
 	install -o root -g bin ${PROG} /usr/local/bin
 	install -o root -g bin ${PROG}.rc /etc/rc.d/${PROG}
