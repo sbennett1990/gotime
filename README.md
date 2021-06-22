@@ -2,7 +2,7 @@ GOTIME(8) - System Manager's Manual
 
 # NAME
 
-**gotime** - simple Daytime Protocol daemon
+**gotime** - simple Daytime Protocol daemon written in go
 
 # SYNOPSIS
 
@@ -62,6 +62,14 @@ variable in
 rc.conf(8):
 
 	pkg_scripts=gotime
+
+# SEE ALSO
+
+rc(8),
+rc.conf(8),
+rc.d(8),
+
+[daytimed(8)](https://github.com/sbennett1990/daytimed)
 
 # AUTHORS
 
