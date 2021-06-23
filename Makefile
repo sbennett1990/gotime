@@ -12,6 +12,7 @@ md:
 install:
 	install -o root -g bin ${PROG} /usr/local/bin
 	install -o root -g bin ${PROG}.rc /etc/rc.d/${PROG}
+	install -o root -g bin -m 644 ${MAN} /usr/local/man/man8
 
 clean:
 	rm -f ${PROG}
