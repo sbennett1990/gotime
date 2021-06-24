@@ -103,4 +103,4 @@ system.
 **gotime**
 only listens on IPv4 addresses.
 
-OpenBSD 6.8 - June 21, 2021
+OpenBSD 6.8 - June 24, 2021
