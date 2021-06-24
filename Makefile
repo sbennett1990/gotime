@@ -9,10 +9,15 @@ gotime: *.go go.mod
 md: ${MAN}
 	mandoc -Tmarkdown ${MAN} > README.md
 
-install:
+install: install-prog install-man
+
+install-prog: ${PROG}
 	install -o root -g bin ${PROG} /usr/local/bin
 	install -o root -g bin ${PROG}.rc /etc/rc.d/${PROG}
+
+install-man: ${MAN}
 	install -o root -g bin -m 644 ${MAN} /usr/local/man/man8
+	makewhatis /usr/local/man
 
 clean:
 	rm -f ${PROG}
