@@ -92,7 +92,7 @@ Scott Bennett
 **gotime**
 has only been built and tested on
 OpenBSD 6.8
-or newer, because it relies on
+and newer, because it relies on
 pledge(2)
 and the
 rc(8)
