@@ -30,6 +30,7 @@ It responds to TCP connections on port
 .Em 13 ,
 returns a human-readable date string to the client,
 then closes the connection.
+Time portion of the date string is reported in UTC.
 .Pp
 The options are as follows:
 .Bl -tag -width Ds
@@ -42,7 +43,7 @@ root privileges are not required for startup and the server will listen on
 port
 .Em 13013 .
 .El
-.Sh BUILD
+.Sh BUILD AND INSTALL
 To build
 .Nm :
 .Pp
@@ -74,13 +75,14 @@ variable in
 .Pp
 .Dl pkg_scripts=gotime
 .Sh EXAMPLES
-Request current time from a local
+Request current date and time from a local
 .Nm
 instance running in debug mode:
 .Pp
 .Dl $ nc localhost 13013
 .Pp
-Request current time from a remote server:
+Make a request to a remote server running
+.Nm :
 .Pp
 .Dl $ nc puffy.example.com 13
 .Sh SEE ALSO

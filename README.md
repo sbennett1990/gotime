@@ -18,6 +18,7 @@ It responds to TCP connections on port
 *13*,
 returns a human-readable date string to the client,
 then closes the connection.
+Time portion of the date string is reported in UTC.
 
 The options are as follows:
 
@@ -31,7 +32,7 @@ The options are as follows:
 > port
 > *13013*.
 
-# BUILD
+# BUILD AND INSTALL
 
 To build
 **gotime**:
@@ -65,13 +66,14 @@ rc.conf(8):
 
 # EXAMPLES
 
-Request current time from a local
+Request current date and time from a local
 **gotime**
 instance running in debug mode:
 
 	$ nc localhost 13013
 
-Request current time from a remote server:
+Make a request to a remote server running
+**gotime**:
 
 	$ nc puffy.example.com 13
 
