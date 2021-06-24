@@ -6,7 +6,7 @@ all: gotime
 gotime: *.go go.mod
 	go build -o ${PROG}
 
-md:
+md: ${MAN}
 	mandoc -Tmarkdown ${MAN} > README.md
 
 install:
