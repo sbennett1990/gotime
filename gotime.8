@@ -73,6 +73,16 @@ variable in
 .Xr rc.conf 8 :
 .Pp
 .Dl pkg_scripts=gotime
+.Sh EXAMPLES
+Request current time from a local
+.Nm
+instance running in debug mode:
+.Pp
+.Dl $ nc localhost 13013
+.Pp
+Request current time from a remote server:
+.Pp
+.Dl $ nc puffy.example.com 13
 .Sh SEE ALSO
 .Xr rc 8 ,
 .Xr rc.conf 8 ,

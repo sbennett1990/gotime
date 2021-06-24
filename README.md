@@ -63,6 +63,18 @@ rc.conf(8):
 
 	pkg_scripts=gotime
 
+# EXAMPLES
+
+Request current time from a local
+**gotime**
+instance running in debug mode:
+
+	$ nc localhost 13013
+
+Request current time from a remote server:
+
+	$ nc puffy.example.com 13
+
 # SEE ALSO
 
 rc(8),
